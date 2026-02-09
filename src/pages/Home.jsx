@@ -4,7 +4,7 @@ import { Products } from "../components/Products";
 function Home() {
   return (
     <div className=" flex items-baseline">
-      <Products />
+      <Products limit= '5'/>
       <Categories />
     </div>
   );
