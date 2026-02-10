@@ -1,7 +1,7 @@
 function CategoryCard({ categoryObj }) {
   return (
     <div
-      className=" w-full h-112 bg-center bg-cover p-4 "
+      className=" w-full h-112 bg-center bg-cover p-4 rounded-xl "
       style={{
         backgroundImage: `radial-gradient(transparent ,#00000088 50% ,black 120%), url(${categoryObj.image})`,
       }}

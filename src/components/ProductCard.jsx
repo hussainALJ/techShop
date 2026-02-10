@@ -5,13 +5,13 @@ function ProductCard({ productObj }) {
   const { addToCart } = useCart();
 
   return (
-    <div className=" w-full md:max-w-100 h-112 shrink-0 overflow-y-hidden rounded-xl ">
+    <div className=" w-full md:max-w-100 h-115 shrink-0 overflow-y-hidden rounded-xl ">
       <img
         className=" object-cover h-55 w-full "
         src={productObj.images[0]}
         alt={productObj.title}
       />
-      <div className=" p-3">
+      <div className=" p-3 border border-t-0 border-gray-600 border-solid rounded-b-xl ">
         <Link to={`product/${productObj.id}`}>
           <h3 className=" text-xl line-clamp-1 ">{productObj.title}</h3>
         </Link>
