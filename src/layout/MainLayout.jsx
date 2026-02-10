@@ -6,6 +6,7 @@ function MainLayout() {
     <header>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/products">Store</NavLink>
+      <NavLink to="/cart" >Cart</NavLink>
     </header>
     <main>
       <Outlet />

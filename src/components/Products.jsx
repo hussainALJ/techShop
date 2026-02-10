@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { fetchProducts } from "../api/productsApi";
 import { useFetch } from "../api/useFetch";
+import { useCart } from "../services/useCart";
+import { useEffect } from "react";
 
 export const Products = (limit = null) => {
   const { data, isLoading, error } = useFetch(fetchProducts);
+  const { addToCart } = useCart();
 
   if (limit)
     if (!isLoading && data.length > limit.limit) data.length = limit.limit;
@@ -18,11 +21,16 @@ export const Products = (limit = null) => {
         <ul className=" list-disc pl-7">
           {data.map((card) => {
             return (
-              <Link key={card.id} to={`/product/${card.id}`}>
-              <li className=" mb-2">
-                {card.title}
+              <li key={card.id} className=" mb-2">
+                <Link to={`/product/${card.id}`}>{card.title}</Link>
+                <button
+                  onClick={() => {
+                    addToCart(card.title);
+                  }}
+                >
+                  Add to cart
+                </button>
               </li>
-              </Link>
             );
           })}
         </ul>
