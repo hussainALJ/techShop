@@ -12,7 +12,7 @@ function ProductCard({ productObj }) {
         alt={productObj.title}
       />
       <div className=" p-3 border border-t-0 border-gray-600 border-solid rounded-b-xl ">
-        <Link to={`product/${productObj.id}`}>
+        <Link to={`/product/${productObj.id}`}>
           <h3 className=" text-xl line-clamp-1 ">{productObj.title}</h3>
         </Link>
         <p className=" text-sm my-6 h-25 line-clamp-5 ">
