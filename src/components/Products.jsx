@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { fetchProducts } from "../api/productsApi";
 import { useFetch } from "../api/useFetch";
 
@@ -17,9 +18,11 @@ export const Products = (limit = null) => {
         <ul className=" list-disc pl-7">
           {data.map((card) => {
             return (
-              <li key={card.id} className=" mb-2">
+              <Link key={card.id} to={`/product/${card.id}`}>
+              <li className=" mb-2">
                 {card.title}
               </li>
+              </Link>
             );
           })}
         </ul>
