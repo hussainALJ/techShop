@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../services/useCart";
+import ProductCounter from "./ProuductCounter";
 
 function ProductCard({ productObj, inCart = false }) {
-  const { addToCart } = useCart();
+  const { cart, addToCart } = useCart();
+
+  cart.map((product) => {
+    if (product.id === productObj.id) return productObj = product
+  })
 
   if (inCart)
     return (
@@ -42,15 +47,19 @@ function ProductCard({ productObj, inCart = false }) {
         </p>
         <div className=" flex justify-between ">
           <span className=" text-xl font-bold ">{productObj.price}$</span>
-          <button
-            onClick={() => {
-              addToCart(productObj)
-              productObj.count = 1
-            }}
-            className=" bg-blue-600 text-white p-2 rounded-md text-sm font-semibold "
-          >
-            Add to cart
-          </button>
+          {productObj.count ? (
+            <ProductCounter productObj={productObj} />
+          ) : (
+            <button
+              onClick={() => {
+                addToCart(productObj);
+                productObj.count = 1;
+              }}
+              className=" bg-blue-600 text-white p-2 rounded-md text-sm font-semibold "
+            >
+              Add to cart
+            </button>
+          )}
         </div>
       </div>
     </div>

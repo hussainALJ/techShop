@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { useCart } from "../services/useCart";
+import ProductCounter from "../components/ProuductCounter";
 
 function Cart() {
   const { cart, removeItem, inc, dec } = useCart();
@@ -11,11 +12,12 @@ function Cart() {
       <div className=" max-w-350 mx-auto mt-15 px-10 ">
         {cart.map((product, index) => (
           <div key={product.id} className=" mb-4 ">
-            <button onClick={() => removeItem(product.id)}>Remove</button>
+            <button onClick={() => {
+              product.count = null
+              removeItem(product.id)
+              }}>Remove</button>
             <ProductCard key={product.id} productObj={product} inCart="true" />
-            <button onClick={() => dec(index)}>-</button>
-            <span>{product.count}</span>
-            <button onClick={() => inc(index)}>+</button>
+            <ProductCounter productObj={product}/>
           </div>
         ))}
         <div className=" max-w-100 mx-auto border border-gray-500 rounded-xl p-6 ">
