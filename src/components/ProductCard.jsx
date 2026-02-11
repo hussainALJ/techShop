@@ -1,8 +1,30 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../services/useCart";
 
-function ProductCard({ productObj }) {
+function ProductCard({ productObj, inCart = false }) {
   const { addToCart } = useCart();
+
+  if (inCart)
+    return (
+      <div className=" flex justify-between items-start h-25 rounded-xl overflow-hidden ">
+        <img
+          className=" object-cover h-full "
+          src={productObj.images[0]}
+          alt={productObj.title}
+        />
+        <div className=" border border-gray-500 rounded-r-xl h-full flex ">
+          <div>
+            <Link to={`/product/${productObj.id}`}>
+              <h3 className=" text-xl line-clamp-1 ">{productObj.title}</h3>
+            </Link>
+            <p className=" text-sm my-1 line-clamp-3 ">
+              {productObj.description}
+            </p>
+          </div>
+          <span className=" text-xl font-bold ">{productObj.price}$</span>
+        </div>
+      </div>
+    );
 
   return (
     <div className=" w-full md:max-w-100 h-115 shrink-0 overflow-y-hidden rounded-xl ">
@@ -21,7 +43,10 @@ function ProductCard({ productObj }) {
         <div className=" flex justify-between ">
           <span className=" text-xl font-bold ">{productObj.price}$</span>
           <button
-            onClick={() => addToCart(productObj.title)}
+            onClick={() => {
+              addToCart(productObj)
+              productObj.count = 1
+            }}
             className=" bg-blue-600 text-white p-2 rounded-md text-sm font-semibold "
           >
             Add to cart
