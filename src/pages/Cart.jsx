@@ -1,10 +1,9 @@
-import { useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { useCart } from "../services/useCart";
 import ProductCounter from "../components/ProuductCounter";
 
 function Cart() {
-  const { cart, removeItem, inc, dec } = useCart();
+  const { cart, removeItem} = useCart();
   let total = 0;
 
   return (
