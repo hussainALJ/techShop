@@ -2,4 +2,4 @@ import { api } from "./api";
 
 export const fetchProducts = () => api.get("/products")
 export const fetchProductById = (id) => api.get(`/products/${id}`)
-export const fetchProductsByTitle = (title) => api.get(`/products/?title=${title}`)
+export const fetchProductsByTC = (filterArr) => api.get(`/products/?title=${filterArr[0]}&categoryId=${filterArr[1]}`)
