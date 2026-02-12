@@ -11,7 +11,7 @@ function MainLayout() {
           <NavLink to="/products">Store</NavLink>
           <NavLink to="/cart" >Cart</NavLink>
         </div>
-        <div>Log in</div>
+        <NavLink to="/login" >Log in</NavLink>
       </div>
     </header>
     <main>

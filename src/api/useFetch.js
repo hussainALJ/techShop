@@ -18,7 +18,7 @@ export const useFetch = (apiFunction, params = null) => {
   };
   useEffect(() => {
     getData();
-  }, [apiFunction, params]);
+  }, [apiFunction]);
 
   return { data, isLoading, error };
 };
