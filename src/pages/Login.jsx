@@ -32,6 +32,7 @@ function Login() {
       />
       <button onClick={() => {
         getToken()
+        nav("/profile")
       }}>Log in</button>
     </div>
   );

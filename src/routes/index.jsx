@@ -5,6 +5,8 @@ import Store from "../pages/Store";
 import ProductDetails from "../pages/ProductDetails";
 import Cart from "../pages/Cart";
 import Login from "../pages/Login";
+import Profile from "../pages/Profile";
+import ProtectedRoutes from "../components/ProtectedRoutes";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,16 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />
+      },
+      {
+        path: "/profile",
+        element: <ProtectedRoutes />,
+        children: [
+          {
+            path: "/profile",
+            element: <Profile />
+          }
+        ]
       }
     ],
   },
